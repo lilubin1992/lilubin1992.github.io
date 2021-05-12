@@ -49,13 +49,21 @@ class Solution {
     }
 
     func dfs(_ triangle: [[Int]], _ level: Int, _ index: Int, _ sum: Int, _ ans: inout Int) {
-        if level == triangle.count {
-            ans = min(ans, sum)
-            return
-        }
+        // if level == triangle.count {
+        //     ans = min(ans, sum)
+        //     return
+        // }
 
         let row = triangle[level]
         if index >= row.count {
+            return
+        }
+
+        let nextLevel = level + 1
+        let newSum = sum + row[index]
+
+        if nextLevel == triangle.count {
+            ans = min(ans, newSum)
             return
         }
 
